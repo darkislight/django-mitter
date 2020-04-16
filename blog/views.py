@@ -1,28 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-posts = [
-    {
-        'author': 'Maaz',
-        'title': 'post 1',
-        'content': 'first post content',
-        'date_posted': 'april 15,2020'
-    },
-
-    {
-        'author':'Jack',
-        'title':'post 2',
-        'content':'second post content',
-        'date_posted':'april 17,2020'
-    }
-]
-
-
+from .models import Post
 
 
 def home(request):
     context = {
-    'posts':posts
+    'posts': Post.objects.all()     #data base content via terminal no longer req dummy data..
     }
 
     return render(request,'blog/home.html', context)
